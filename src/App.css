@@ -18,6 +18,16 @@ ul {
   margin: 1rem 0;
 }
 
+.topic-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.topic-links li {
+  margin: 0.5rem;
+}
+
 .articles-container {
   max-width: 800px;
   margin: 0 auto;
