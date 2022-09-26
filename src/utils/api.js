@@ -16,7 +16,17 @@ export const getTopics = async () => {
   return data.topics
 }
 
-export const getArticlesByTopics = async topic => {
-  const { data } = await api.get(`/articles?topics=${topic}`)
-  return data.topics
+// export const getArticlesByTopics = async topic => {
+//   const { data } = await api.get(`/articles?topics=${topic}`)
+//   return data.topics
+// }
+
+export const getArticlesByTopics = topic => {
+  return api
+    .get(`/articles?topics=${topic}`, {
+      params: {
+        topic: topic,
+      },
+    })
+    .then(({ data }) => data.articles)
 }

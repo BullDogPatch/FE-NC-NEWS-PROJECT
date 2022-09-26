@@ -17,7 +17,7 @@ function Navbar() {
   }, [])
   return (
     <nav>
-      <Link to="/" />
+      <Link to="/articles">Articles</Link>
       <ul className="topic-links">
         {topics.map(topic => (
           <li key={topic.slug}>

@@ -1,28 +1,29 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getArticlesByTopics } from '../utils/api'
-
-console.log(getArticlesByTopics('Football'))
+import Loading from './Loading'
 
 function Topics() {
   const [topics, setTopics] = useState([])
   const [loading, setLoading] = useState(false)
   const { topic } = useParams()
 
-  console.log(topic, '<<----')
-
-  const topicSearch = topic.charAt(0).toUpperCase() + topic.slice(1)
-  console.log(topicSearch, '<<----')
-
   useEffect(() => {
     setLoading(true)
-    getArticlesByTopics(topicSearch).then(articles => {
-      console.log(articles, '<<----')
+    getArticlesByTopics(topic).then(data => {
+      setTopics(data)
       setLoading(false)
     })
-  }, [topicSearch])
+  }, [topic])
+  if (loading) return <Loading />
 
-  return <div>Topics</div>
+  return (
+    <div>
+      {topics.map(item => (
+        <div key={item.article_id}>{item.title}</div>
+      ))}
+    </div>
+  )
 }
 
 export default Topics

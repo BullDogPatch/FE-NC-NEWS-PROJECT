@@ -2,9 +2,9 @@ import Heading from './Heading'
 
 const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <Heading>NC News</Heading>
-    </div>
+    </header>
   )
 }
 
