@@ -1,32 +1,34 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { getTopicArticles } from '../utils/api'
 import Article from './Article'
-import { getArticles } from '../utils/api'
 import Loading from './Loading'
 
-const Articles = () => {
+const Topics = () => {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(false)
+  const { topic } = useParams()
 
   useEffect(() => {
     setLoading(true)
-    getArticles().then(articlesFromApi => {
+    getTopicArticles(topic).then(articlesFromApi => {
       setArticles(articlesFromApi)
       setLoading(false)
     })
-  }, [])
+  }, [topic])
 
   if (loading) return <Loading />
 
   return (
-    <div className="articles-container">
-      <h2>Articles</h2>
-      <ul>
+    <div className="topic-articles-container">
+      <h2>{topic}</h2>
+      <>
         {articles.map(article => (
           <Article key={article.article_id} article={article} />
         ))}
-      </ul>
+      </>
     </div>
   )
 }
 
-export default Articles
+export default Topics
