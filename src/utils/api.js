@@ -25,7 +25,7 @@ export const getArticlesByTopics = topic => {
   return api
     .get(`/articles?topics=${topic}`, {
       params: {
-        topic: topic,
+        topics: topic,
       },
     })
     .then(({ data }) => data.articles)

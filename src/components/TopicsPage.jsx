@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getArticlesByTopics } from '../utils/api'
+import SingleArticleForTopic from './SingleArticleForTopic'
 import Loading from './Loading'
 
-function Topics() {
+function TopicsPage() {
   const [topics, setTopics] = useState([])
   const [loading, setLoading] = useState(false)
   const { topic } = useParams()
@@ -15,15 +16,16 @@ function Topics() {
       setLoading(false)
     })
   }, [topic])
+
   if (loading) return <Loading />
 
   return (
-    <div>
+    <div className="topics-container">
       {topics.map(item => (
-        <div key={item.article_id}>{item.title}</div>
+        <SingleArticleForTopic key={item.article_id} item={item} />
       ))}
     </div>
   )
 }
 
-export default Topics
+export default TopicsPage

@@ -18,6 +18,14 @@ ul {
   margin: 1rem 0;
 }
 
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: white;
+}
+
 .topic-links {
   display: flex;
   flex-wrap: wrap;
@@ -46,4 +54,37 @@ ul {
 
 .article h3 {
   margin-bottom: 10px;
+}
+
+.article p {
+  margin-bottom: 10px;
+}
+
+.topics-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.topic-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* article-container to be grid at bigger screen */
+@media (min-width: 768px) {
+  .topics-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  .article {
+    width: 100%;
+    height: 100%;
+  }
 }

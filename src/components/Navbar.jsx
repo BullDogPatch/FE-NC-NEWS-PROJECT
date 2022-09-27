@@ -16,7 +16,7 @@ function Navbar() {
     })
   }, [])
   return (
-    <nav>
+    <nav className="navbar">
       <Link to="/articles">Articles</Link>
       <ul className="topic-links">
         {topics.map(topic => (
