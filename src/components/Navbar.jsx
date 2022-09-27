@@ -19,7 +19,7 @@ function Navbar() {
         <Link to="/articles">Articles</Link>
         {topics.map(topic => (
           <li key={topic.slug}>
-            <Link to={`/articles/${topic.slug}`}>{topic.slug}</Link>
+            <Link to={`/${topic.slug}`}>{topic.slug}</Link>
           </li>
         ))}
       </ul>

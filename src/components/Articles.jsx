@@ -10,8 +10,8 @@ const Articles = () => {
   useEffect(() => {
     setLoading(true)
     getArticles().then(articlesFromApi => {
-      setArticles(articlesFromApi)
       setLoading(false)
+      setArticles(articlesFromApi)
     })
   }, [])
 
@@ -21,7 +21,7 @@ const Articles = () => {
     <div className="articles-container">
       <h2>Articles</h2>
       <ul>
-        {articles.map(article => (
+        {articles?.map(article => (
           <Article key={article.article_id} article={article} />
         ))}
       </ul>

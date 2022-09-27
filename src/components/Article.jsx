@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import codingImage from '../images/coding.png'
 import cookingImage from '../images/cooking.png'
 import footballImage from '../images/football.png'
@@ -15,6 +16,7 @@ const Article = ({ article }) => {
         <img className="topic-image" src={footballImage} alt="football" />
       )}
       <p>Comments: {article.comment_count}</p>
+      <Link to={`/articles/${article.article_id}`}>See more</Link>
     </div>
   )
 }
