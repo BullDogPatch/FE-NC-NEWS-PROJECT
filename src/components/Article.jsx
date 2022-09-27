@@ -6,8 +6,10 @@ import footballImage from '../images/football.png'
 const Article = ({ article }) => {
   return (
     <div className="topic-articles">
-      <h3>{article.title}</h3>
-      <p className="topic-category">{article.topic}</p>
+      <h2>{article.title}</h2>
+      <p className="topic-category" style={{ textTransform: 'capitalize' }}>
+        {article.topic}
+      </p>
       {article.topic === 'coding' ? (
         <img className="topic-image" src={codingImage} alt="coding" />
       ) : article.topic === 'cooking' ? (
@@ -15,10 +17,14 @@ const Article = ({ article }) => {
       ) : (
         <img className="topic-image" src={footballImage} alt="football" />
       )}
-      <p>Comments: {article.comment_count}</p>
-      <Link to={`/articles/${article.article_id}`}>See more</Link>
+      <p className="comment">Comments: {article.comment_count}</p>
+      <Link to={`/articles/${article.article_id}`} className="see-more-link">
+        See more
+      </Link>
     </div>
   )
 }
+
+// const styles = {
 
 export default Article

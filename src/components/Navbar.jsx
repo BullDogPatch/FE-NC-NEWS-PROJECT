@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { getTopics } from '../utils/api'
 
 function Navbar() {
@@ -16,10 +16,33 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul className="topic-links">
-        <Link to="/articles">Articles</Link>
+        <NavLink
+          to="/articles"
+          activeStyle={{ color: 'green', textDecoration: 'underline' }}
+          style={({ isActive }) => ({
+            color: isActive ? 'rgb(139, 3, 3)' : 'white',
+            textTransform: 'capitalize',
+            fontSize: '1.5rem',
+          })}
+        >
+          Articles
+        </NavLink>
         {topics.map(topic => (
           <li key={topic.slug}>
-            <Link to={`/${topic.slug}`}>{topic.slug}</Link>
+            <NavLink
+              to={`/${topic.slug}`}
+              activeStyle={{
+                color: 'rgb(139, 3, 3)',
+                textDecoration: 'underline',
+              }}
+              style={({ isActive }) => ({
+                color: isActive ? 'rgb(139, 3, 3)' : 'white',
+                textTransform: 'capitalize',
+                fontSize: '1.5rem',
+              })}
+            >
+              {topic.slug}
+            </NavLink>
           </li>
         ))}
       </ul>
