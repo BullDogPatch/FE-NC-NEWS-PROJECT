@@ -14,7 +14,6 @@ const Article = ({ article }) => {
       ) : (
         <img className="topic-image" src={footballImage} alt="football" />
       )}
-      <p className="topic-article-body">{article.body.slice(0, 180)}...</p>
       <p>Comments: {article.comment_count}</p>
     </div>
   )
