@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getTopicArticles } from '../utils/api'
-import TopicArticles from './TopicArticles'
+import Article from './Article'
 import Loading from './Loading'
 
 const Topics = () => {
@@ -24,7 +24,7 @@ const Topics = () => {
       <h2>{topic}</h2>
       <>
         {articles.map(article => (
-          <TopicArticles key={article.article_id} article={article} />
+          <Article key={article.article_id} article={article} />
         ))}
       </>
     </div>
