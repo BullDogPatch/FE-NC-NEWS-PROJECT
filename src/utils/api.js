@@ -25,3 +25,10 @@ export const getArticleById = async article_id => {
   const { data } = await api.get(`/articles/${article_id}`)
   return data
 }
+
+export const patchArticleById = async (id, value) => {
+  const { data } = await api.patch(`/articles/${id}`, {
+    inc_votes: value,
+  })
+  return data
+}

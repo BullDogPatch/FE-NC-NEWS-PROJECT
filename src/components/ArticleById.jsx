@@ -6,9 +6,10 @@ import cookingImage from '../images/cooking.png'
 import footballImage from '../images/football.png'
 import Loading from './Loading'
 import ErrorPage from './ErrorPage'
+import Votes from './Votes'
 
 const ArticleById = () => {
-  const [articleById, setArticleById] = useState({})
+  const [singleArticle, setSingleArticle] = useState({})
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -19,7 +20,7 @@ const ArticleById = () => {
     setLoading(true)
     getArticleById(article_id)
       .then(({ article }) => {
-        setArticleById(article)
+        setSingleArticle(article)
         setLoading(false)
       })
       .catch(err => {
@@ -33,17 +34,21 @@ const ArticleById = () => {
 
   return (
     <div className="single-article">
-      <h3>{articleById.title}</h3>
-      <p className="category">{articleById.topic}</p>
-      {articleById.topic === 'coding' ? (
+      <h3>{singleArticle.title}</h3>
+      <p className="category">{singleArticle.topic}</p>
+      {singleArticle.topic === 'coding' ? (
         <img className="topic-image" src={codingImage} alt="coding" />
-      ) : articleById.topic === 'cooking' ? (
+      ) : singleArticle.topic === 'cooking' ? (
         <img className="topic-image" src={cookingImage} alt="cooking" />
       ) : (
         <img className="topic-image" src={footballImage} alt="football" />
       )}
-      <p className="article-description">{articleById.body}</p>
-      <p className="comment-count">Comments: {articleById.comment_count}</p>
+      <p className="article-description">{singleArticle.body}</p>
+      <Votes
+        singleArticle={singleArticle}
+        setSingleArticle={setSingleArticle}
+      />
+      <p className="comment-count">Comments: {singleArticle.comment_count}</p>
       <button style={btnStyle} onClick={() => navigate(-1)}>
         Back
       </button>
