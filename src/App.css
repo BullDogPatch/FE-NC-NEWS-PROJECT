@@ -40,10 +40,8 @@ ul {
   background-color: rgb(151, 150, 150);
   overflow: hidden;
   display: flex;
-  /* justify-content: space-between; */
   justify-content: center;
   align-items: center;
-  /* width: 100vw; */
   height: 80px;
   margin: 0 auto;
   margin-bottom: 1rem;
@@ -105,7 +103,6 @@ ul {
   width: 60%;
   height: 50%;
   margin: 10px 0;
-  /* object-fit: cover; */
 }
 
 .topic-article-body {

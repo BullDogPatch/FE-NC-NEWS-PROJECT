@@ -18,7 +18,7 @@ function Navbar() {
       <ul className="topic-links">
         <NavLink
           to="/articles"
-          activeStyle={{ color: 'green', textDecoration: 'underline' }}
+          activestyle={{ color: 'green', textDecoration: 'underline' }}
           style={({ isActive }) => ({
             color: isActive ? 'rgb(139, 3, 3)' : 'white',
             textTransform: 'capitalize',
@@ -31,7 +31,7 @@ function Navbar() {
           <li key={topic.slug}>
             <NavLink
               to={`/${topic.slug}`}
-              activeStyle={{
+              activestyle={{
                 color: 'rgb(139, 3, 3)',
                 textDecoration: 'underline',
               }}

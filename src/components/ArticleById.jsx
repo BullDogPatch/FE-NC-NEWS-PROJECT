@@ -15,7 +15,6 @@ const ArticleById = () => {
   useEffect(() => {
     setLoading(true)
     getArticleById(article_id).then(({ article }) => {
-      console.log(article, 'data')
       setArticleById(article)
       setLoading(false)
     })

@@ -25,6 +25,4 @@ const Article = ({ article }) => {
   )
 }
 
-// const styles = {
-
 export default Article
