@@ -5,21 +5,30 @@ import codingImage from '../images/coding.png'
 import cookingImage from '../images/cooking.png'
 import footballImage from '../images/football.png'
 import Loading from './Loading'
+import ErrorPage from './ErrorPage'
 
 const ArticleById = () => {
   const [articleById, setArticleById] = useState({})
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const { article_id } = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
-    getArticleById(article_id).then(({ article }) => {
-      setArticleById(article)
-      setLoading(false)
-    })
+    getArticleById(article_id)
+      .then(({ article }) => {
+        setArticleById(article)
+        setLoading(false)
+      })
+      .catch(err => {
+        setError(true)
+        setErrorMessage(err.message)
+      })
   }, [article_id])
 
+  if (error) return <ErrorPage errorMessage={errorMessage} />
   if (loading) return <Loading />
 
   return (
