@@ -7,8 +7,6 @@ const Votes = ({ singleArticle, setSingleArticle }) => {
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  // update the vote count on the server, spread the existing article object and update the votes property, also consider optimistic rendering
-
   const handleVote = vote => {
     setVoteChange(currVoteChange => currVoteChange + vote)
     patchArticleById(singleArticle.article_id, vote).catch(err => {
