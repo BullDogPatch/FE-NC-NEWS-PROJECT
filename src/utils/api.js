@@ -11,18 +11,17 @@ export const getArticles = async () => {
   return data.articles
 }
 
-// use axios params
-
 export const getTopics = async () => {
   const { data } = await api.get('/topics')
   return data.topics
 }
 
 export const getTopicArticles = async topic => {
-  const { data } = await api.get('/articles', {
-    params: {
-      topic,
-    },
-  })
+  const { data } = await api.get(`/articles?topic=${topic}`)
   return data.articles
+}
+
+export const getArticleById = async article_id => {
+  const { data } = await api.get(`/articles/${article_id}`)
+  return data
 }

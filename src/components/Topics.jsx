@@ -23,7 +23,7 @@ const Topics = () => {
     <div className="topic-articles-container">
       <h2>{topic}</h2>
       <>
-        {articles.map(article => (
+        {articles?.map(article => (
           <Article key={article.article_id} article={article} />
         ))}
       </>
