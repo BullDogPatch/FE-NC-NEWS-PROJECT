@@ -4,26 +4,25 @@ import Loading from './Loading'
 import ErrorPage from './ErrorPage'
 import Moment from 'moment'
 
-function Comments({ singleArticle }) {
+function Comments({ article_id }) {
   const [comments, setComments] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
-    if (!singleArticle.article_id) return
+    if (!article_id) return
     setLoading(true)
-    getCommentsByArticleId(singleArticle.article_id)
+    getCommentsByArticleId(article_id)
       .then(({ comments }) => {
         setComments(comments)
-        console.log(comments)
         setLoading(false)
       })
       .catch(err => {
         setError(true)
         setErrorMessage(err.message)
       })
-  }, [singleArticle.article_id])
+  }, [article_id])
 
   if (error) return <ErrorPage errorMessage={errorMessage} />
   if (loading) return <Loading />

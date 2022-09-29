@@ -50,7 +50,7 @@ const ArticleById = () => {
         setSingleArticle={setSingleArticle}
       />
       <p className="comment-count">Comments: {singleArticle.comment_count}</p>
-      <Comments singleArticle={singleArticle} />
+      <Comments article_id={singleArticle.article_id} />
       <button style={btnStyle} onClick={() => navigate(-1)}>
         Back
       </button>
