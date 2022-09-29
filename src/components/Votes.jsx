@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { patchArticleById } from '../utils/api'
-import ErrorPage from './ErrorPage'
 
 const Votes = ({ singleArticle, setSingleArticle }) => {
   const [voteChange, setVoteChange] = useState(0)
@@ -21,6 +20,8 @@ const Votes = ({ singleArticle, setSingleArticle }) => {
       setErrorMessage(err.message)
     })
   }
+
+  if (error) return <p>{errorMessage}</p>
 
   return (
     <>
