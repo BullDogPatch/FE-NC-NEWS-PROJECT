@@ -6,6 +6,7 @@ import cookingImage from '../images/cooking.png'
 import footballImage from '../images/football.png'
 import Loading from './Loading'
 import ErrorPage from './ErrorPage'
+import Comments from './Comments'
 import Votes from './Votes'
 
 const ArticleById = () => {
@@ -49,6 +50,7 @@ const ArticleById = () => {
         setSingleArticle={setSingleArticle}
       />
       <p className="comment-count">Comments: {singleArticle.comment_count}</p>
+      <Comments article_id={singleArticle.article_id} />
       <button style={btnStyle} onClick={() => navigate(-1)}>
         Back
       </button>
