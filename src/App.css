@@ -178,3 +178,39 @@ a:visited {
   color: red;
   font-size: 2rem;
 }
+
+.votes {
+  margin: 20px;
+}
+
+.votes p {
+  padding: 20px;
+  font-weight: 700;
+}
+
+.vote-btn {
+  margin: 0 10px;
+  background-color: #3c3939;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.vote-btn:hover {
+  background-color: #555;
+  color: white;
+}
+
+.vote-btn:disabled {
+  background-color: rgb(211, 207, 207);
+  color: white;
+}
