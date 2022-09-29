@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { postComment } from '../utils/api'
+import Loading from './Loading'
 
 function PostComment({
   article_id,
@@ -8,6 +9,10 @@ function PostComment({
   commentTotal,
 }) {
   const [text, setText] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [success, setSuccess] = useState(false)
 
   const handleChange = e => {
     setText(e.target.value)
@@ -15,17 +20,25 @@ function PostComment({
 
   const handleSubmit = event => {
     event.preventDefault()
+    setLoading(true)
     setCommentTotal(commentTotal + 1)
     if (text.length > 0) {
-      postComment(article_id, { body: text, username: 'tickle122' }).then(
-        ({ comment }) => {
+      postComment(article_id, { body: text, username: 'tickle122' })
+        .then(({ comment }) => {
+          setLoading(false)
           setComments(currentComments => [comment, ...currentComments])
-        }
-      )
-      setText('')
+          setText('')
+          setSuccess(true)
+        })
+        .catch(err => {
+          setError(true)
+          setErrorMessage(err.message)
+        })
     }
   }
 
+  if (error) return <p className="error">{errorMessage}</p>
+  if (loading) return <Loading />
   return (
     <form onSubmit={handleSubmit}>
       <div className="post-comment-container">

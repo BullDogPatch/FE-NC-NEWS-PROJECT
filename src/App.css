@@ -298,3 +298,8 @@ a:visited {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.error {
+  color: red;
+  font-weight: 700;
+}

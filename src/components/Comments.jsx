@@ -41,7 +41,6 @@ function Comments({ article_id, commentCount }) {
         setComments={setComments}
         commentTotal={commentTotal}
       />
-      <p className="comment-count">Comments: {+commentCount}</p>
       {comments.map(comment => (
         <div className="single-comment" key={comment.comment_id}>
           <p className="comment-body">{comment.body}</p>
