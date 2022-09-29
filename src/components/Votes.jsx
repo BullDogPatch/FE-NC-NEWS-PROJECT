@@ -8,9 +8,7 @@ const Votes = ({ singleArticle, setSingleArticle }) => {
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleVote = vote => {
-    if (hasVoted) {
-      return
-    }
+    if (hasVoted) return
     setVoteChange(currVoteChange => currVoteChange + vote)
     setHasVoted(true)
     patchArticleById(singleArticle.article_id, vote).catch(err => {
