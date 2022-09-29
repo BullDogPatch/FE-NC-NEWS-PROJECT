@@ -12,7 +12,6 @@ function PostComment({
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [success, setSuccess] = useState(false)
 
   const handleChange = e => {
     setText(e.target.value)
@@ -28,7 +27,6 @@ function PostComment({
           setLoading(false)
           setComments(currentComments => [comment, ...currentComments])
           setText('')
-          setSuccess(true)
         })
         .catch(err => {
           setError(true)
@@ -39,6 +37,7 @@ function PostComment({
 
   if (error) return <p className="error">{errorMessage}</p>
   if (loading) return <Loading />
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="post-comment-container">

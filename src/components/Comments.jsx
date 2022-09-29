@@ -8,12 +8,9 @@ import PostComment from './PostComment'
 function Comments({ article_id, commentCount }) {
   const [comments, setComments] = useState([])
   const [loading, setLoading] = useState(false)
-
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [commentTotal, setCommentTotal] = useState(commentCount)
-
-  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     if (!article_id) return
@@ -37,7 +34,6 @@ function Comments({ article_id, commentCount }) {
       <PostComment
         article_id={article_id}
         setCommentTotal={setCommentTotal}
-        setSuccess={setSuccess}
         setComments={setComments}
         commentTotal={commentTotal}
       />
