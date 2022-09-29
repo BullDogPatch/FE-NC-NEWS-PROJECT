@@ -214,3 +214,53 @@ a:visited {
   background-color: rgb(211, 207, 207);
   color: white;
 }
+
+/* comments */
+.single-comment {
+  line-height: 1.5;
+  width: 90%;
+  margin: 15px auto;
+  border: 4px solid slategrey;
+  border-radius: 8px;
+}
+
+.comment-body {
+  padding: 15px;
+  font-size: 1.5rem;
+}
+
+.comment-author {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.comment-author span {
+  color: red;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.comment-votes {
+  padding: 5px;
+
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.comment-votes span {
+  color: red;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.created-at {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding-bottom: 15px;
+}
+
+.created-at span {
+  color: red;
+  font-weight: 700;
+  font-size: 1.2rem;
+}

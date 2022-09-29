@@ -32,3 +32,8 @@ export const patchArticleById = async (id, value) => {
   })
   return data
 }
+
+export const getCommentsByArticleId = async article_id => {
+  const { data } = await api.get(`/articles/${article_id}/comments`)
+  return data
+}
