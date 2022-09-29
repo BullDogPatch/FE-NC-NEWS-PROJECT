@@ -7,14 +7,12 @@ const Votes = ({ singleArticle }) => {
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleVoteChange = vote => {
-    if (voteChange === 0) {
-      setVoteChange(curr => curr + vote)
-      patchArticleById(singleArticle.article_id, vote).catch(err => {
-        setVoteChange(curr => curr - vote)
-        setError(true)
-        setErrorMessage(err.message)
-      })
-    }
+    setVoteChange(curr => curr + vote)
+    patchArticleById(singleArticle.article_id, vote).catch(err => {
+      setVoteChange(curr => curr - vote)
+      setError(true)
+      setErrorMessage(err.message)
+    })
   }
 
   if (error) return <p>{errorMessage}</p>
