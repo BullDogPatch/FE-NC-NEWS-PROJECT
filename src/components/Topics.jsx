@@ -3,6 +3,7 @@ import { getTopicArticles } from '../utils/api'
 import Article from './Article'
 import Loading from './Loading'
 import ErrorPage from './ErrorPage'
+import QueryForm from './QueryForm'
 import { useQuery } from '@tanstack/react-query'
 
 const Topics = () => {
@@ -21,6 +22,7 @@ const Topics = () => {
   return (
     <div className="topic-articles-container">
       <button onClick={() => navigate('/')}>Go back</button>
+      <QueryForm />
       <h2>{topic}</h2>
       <>
         {data?.map(article => (
