@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { getTopics } from '../utils/api'
+import Loading from './Loading'
 
 function Navbar() {
   const [topics, setTopics] = useState([])
@@ -17,16 +18,6 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul className="topic-links">
-        <NavLink
-          to="/articles"
-          style={({ isActive }) => ({
-            color: isActive ? 'rgb(139, 3, 3)' : 'white',
-            textTransform: 'capitalize',
-            fontSize: '1.5rem',
-          })}
-        >
-          Articles
-        </NavLink>
         {topics.map(topic => (
           <li key={topic.slug}>
             <NavLink

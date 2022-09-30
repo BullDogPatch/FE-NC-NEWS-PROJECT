@@ -47,3 +47,13 @@ export const postComment = async (article_id, comment) => {
   const { data } = await api.post(`/articles/${article_id}/comments`, comment)
   return data
 }
+
+export const deleteComment = async comment_id => {
+  const { data } = await api.delete(`/comments/${comment_id}`)
+  return data
+}
+
+export const getUsers = async () => {
+  const { data } = await api.get('/users')
+  return data.topics
+}
