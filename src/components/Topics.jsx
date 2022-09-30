@@ -1,40 +1,31 @@
-import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getTopicArticles } from '../utils/api'
 import Article from './Article'
 import Loading from './Loading'
 import ErrorPage from './ErrorPage'
+import { useQuery } from '@tanstack/react-query'
 
 const Topics = () => {
-  const [articles, setArticles] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [errorMessage, setErrorMessage] = useState('')
   const { topic } = useParams()
 
-  useEffect(() => {
-    setError(false)
-    setLoading(true)
-    getTopicArticles(topic)
-      .then(articlesFromApi => {
-        setArticles(articlesFromApi)
-        setLoading(false)
-      })
-      .catch(err => {
-        setError(true)
-        setErrorMessage(err.message)
-        setLoading(false)
-      })
-  }, [topic])
+  const { data, isLoading, isError, error } = useQuery(
+    ['topic', topic],
+    () => getTopicArticles(topic),
+    {
+      staleTime: 50000,
+      retry: 1,
+    }
+  )
 
-  if (error) return <ErrorPage errorMessage={errorMessage} />
-  if (loading) return <Loading />
+  if (isLoading) return <Loading />
+
+  if (isError) return <ErrorPage errorMessage={error.message} />
 
   return (
     <div className="topic-articles-container">
       <h2>{topic}</h2>
       <>
-        {articles?.map(article => (
+        {data?.map(article => (
           <Article key={article.article_id} article={article} />
         ))}
       </>
