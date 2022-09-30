@@ -1,31 +1,49 @@
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getTopicArticles } from '../utils/api'
 import Article from './Article'
 import Loading from './Loading'
 import ErrorPage from './ErrorPage'
 import QueryForm from './QueryForm'
-import { useQuery } from '@tanstack/react-query'
 
 const Topics = () => {
+  const [articles, setArticles] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [sortBy, setSortBy] = useState('created_at')
+  const [order, setOrder] = useState('desc')
   const { topic } = useParams()
   const navigate = useNavigate()
-  const { data, isLoading, isError, error } = useQuery(
-    ['topic', topic],
-    () => getTopicArticles(topic),
-    { staleTime: 40000, retry: 1 }
-  )
 
-  if (isLoading) return <Loading />
+  useEffect(() => {
+    getTopicArticles(topic, sortBy, order)
+      .then(articlesFromApi => {
+        setArticles(articlesFromApi)
+        setLoading(false)
+      })
+      .catch(err => {
+        setError(true)
+        setErrorMessage(err.message)
+      })
+  }, [topic, sortBy, order])
 
-  if (isError) return <ErrorPage errorMessage={error.message} />
+  if (loading) return <Loading />
+
+  if (error) return <ErrorPage errorMessage={errorMessage.message} />
 
   return (
     <div className="topic-articles-container">
       <button onClick={() => navigate('/')}>Go back</button>
-      <QueryForm />
+      <QueryForm
+        setOrder={setOrder}
+        setSortBy={setSortBy}
+        order={order}
+        sortBy={sortBy}
+      />
       <h2>{topic}</h2>
       <>
-        {data?.map(article => (
+        {articles?.map(article => (
           <Article key={article.article_id} article={article} />
         ))}
       </>

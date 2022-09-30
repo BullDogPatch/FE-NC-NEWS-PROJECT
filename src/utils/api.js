@@ -10,15 +10,15 @@ export const getArticles = async (sortBy, orderBy) => {
   return data.articles
 }
 
-//sort_by=created_at&order=desc
-
 export const getTopics = async (sortBy, orderBy) => {
   const { data } = await api.get(`/topics?sort_by=${sortBy}&order=${orderBy}`)
   return data.topics
 }
 
-export const getTopicArticles = async topic => {
-  const { data } = await api.get(`/articles?topic=${topic}`)
+export const getTopicArticles = async (topic, sortBy, orderBy) => {
+  const { data } = await api.get(
+    `/articles?topic=${topic}&sort_by=${sortBy}&order=${orderBy}`
+  )
   return data.articles
 }
 
@@ -51,5 +51,5 @@ export const deleteComment = async comment_id => {
 
 export const getUsers = async () => {
   const { data } = await api.get('/users')
-  return data.topics
+  return data
 }

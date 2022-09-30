@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Articles from './components/Articles'
 import ArticleById from './components/ArticleById'
 import Topics from './components/Topics'
+import Users from './components/Users'
 import RouteNotFound from './components/RouteNotFound'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Articles />} />
             <Route path="/:topic" element={<Topics />} />
             <Route path="/articles/:article_id" element={<ArticleById />} />
+            <Route path="/users" element={<Users />} />
             <Route path="*" element={<RouteNotFound />} />
           </Routes>
         </BrowserRouter>
