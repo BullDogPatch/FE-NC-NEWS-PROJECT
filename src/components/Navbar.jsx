@@ -19,7 +19,6 @@ function Navbar() {
       <ul className="topic-links">
         <NavLink
           to="/articles"
-          activestyle={{ color: 'green', textDecoration: 'underline' }}
           style={({ isActive }) => ({
             color: isActive ? 'rgb(139, 3, 3)' : 'white',
             textTransform: 'capitalize',

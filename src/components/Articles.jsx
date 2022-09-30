@@ -9,6 +9,8 @@ const Articles = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [sort_by, setSort_by] = useState('created_at')
+  const [order, setOrder] = useState('desc')
 
   useEffect(() => {
     setLoading(true)
