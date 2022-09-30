@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getTopicArticles } from '../utils/api'
 import Article from './Article'
 import Loading from './Loading'
@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query'
 
 const Topics = () => {
   const { topic } = useParams()
+  const navigate = useNavigate()
   const { data, isLoading, isError, error } = useQuery(
     ['topic', topic],
     () => getTopicArticles(topic),
@@ -19,6 +20,7 @@ const Topics = () => {
 
   return (
     <div className="topic-articles-container">
+      <button onClick={() => navigate('/')}>Go back</button>
       <h2>{topic}</h2>
       <>
         {data?.map(article => (
