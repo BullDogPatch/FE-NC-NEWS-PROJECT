@@ -9,40 +9,56 @@ const Articles = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [sort_by, setSort_by] = useState('created_at')
+  const [sortBy, setSortBy] = useState('created_at')
   const [order, setOrder] = useState('desc')
 
   useEffect(() => {
+    setError(false)
     setLoading(true)
-    getArticles('created_at', 'desc')
+    getArticles(sortBy, order)
       .then(articlesFromApi => {
-        setLoading(false)
         setArticles(articlesFromApi)
+        setLoading(false)
       })
       .catch(err => {
         setError(true)
         setErrorMessage(err.message)
+        setLoading(false)
       })
-  }, [])
+  }, [sortBy, order])
 
   if (error) return <ErrorPage errorMessage={errorMessage} />
   if (loading) return <Loading />
 
   return (
     <div className="articles-container">
-      <div>
-        <p>Sort Articles by</p>
-        <label htmlFor="asc">Ascending</label>
-        <input type="radio" name="" id="asc" />
-        <label htmlFor="desc">Descending</label>
-        <input type="radio" name="" id="desc" />
+      <h2>Articles</h2>
+      <div className="sort-container">
+        <label htmlFor="sort_by">Sort by:</label>
+        <select
+          id="sort_by"
+          value={sortBy}
+          onChange={e => setSortBy(e.target.value)}
+        >
+          <option value="created_at">Date</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
+        </select>
+        <label htmlFor="order">Order:</label>
+        <select
+          id="order"
+          value={order}
+          onChange={e => setOrder(e.target.value)}
+        >
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
       </div>
-      <h2>All Articles</h2>
-      <div>
+      <>
         {articles?.map(article => (
           <Article key={article.article_id} article={article} />
         ))}
-      </div>
+      </>
     </div>
   )
 }
