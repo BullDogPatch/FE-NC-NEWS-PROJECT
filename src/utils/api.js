@@ -12,8 +12,8 @@ export const getArticles = async (sortBy, orderBy) => {
 
 //sort_by=created_at&order=desc
 
-export const getTopics = async () => {
-  const { data } = await api.get('/topics')
+export const getTopics = async (sortBy, orderBy) => {
+  const { data } = await api.get(`/topics?sort_by=${sortBy}&order=${orderBy}`)
   return data.topics
 }
 
