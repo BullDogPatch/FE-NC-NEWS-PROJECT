@@ -1,15 +1,20 @@
 import axios from 'axios'
 
-// remove this comment when approved, only way I could get to open pr
-
 const api = axios.create({
   baseURL: 'https://backend-news-example.herokuapp.com/api',
 })
 
-export const getArticles = async () => {
-  const { data } = await api.get('/articles')
+export const getArticles = async (sortBy, order) => {
+  const { data } = await api.get(`/articles`, {
+    params: {
+      sortBy,
+      order,
+    },
+  })
   return data.articles
 }
+
+//sort_by=created_at&order=desc
 
 export const getTopics = async () => {
   const { data } = await api.get('/topics')

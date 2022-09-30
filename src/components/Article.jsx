@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import codingImage from '../images/coding.png'
 import cookingImage from '../images/cooking.png'
 import footballImage from '../images/football.png'
+import Moment from 'moment'
 
 const Article = ({ article }) => {
   return (
@@ -17,7 +18,13 @@ const Article = ({ article }) => {
       ) : (
         <img className="topic-image" src={footballImage} alt="football" />
       )}
-      <p className="comment">Comments: {article.comment_count}</p>
+      <div>
+        <p className="comment">Comments: {article.comment_count}</p>
+        <p>
+          <span>Created</span>:{' '}
+          {Moment(article.created_at).format('MMMM Do YYYY')}
+        </p>
+      </div>
       <Link to={`/articles/${article.article_id}`} className="see-more-link">
         See more
       </Link>

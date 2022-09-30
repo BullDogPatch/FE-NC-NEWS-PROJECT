@@ -13,6 +13,7 @@ function Navbar() {
       setLoading(false)
     })
   }, [])
+
   return (
     <nav className="navbar">
       <ul className="topic-links">

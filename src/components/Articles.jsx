@@ -12,7 +12,7 @@ const Articles = () => {
 
   useEffect(() => {
     setLoading(true)
-    getArticles()
+    getArticles('created_at', 'desc')
       .then(articlesFromApi => {
         setLoading(false)
         setArticles(articlesFromApi)
@@ -28,6 +28,13 @@ const Articles = () => {
 
   return (
     <div className="articles-container">
+      <div>
+        <p>Sort Articles by</p>
+        <label htmlFor="asc">Ascending</label>
+        <input type="radio" name="" id="asc" />
+        <label htmlFor="desc">Descending</label>
+        <input type="radio" name="" id="desc" />
+      </div>
       <h2>All Articles</h2>
       <div>
         {articles?.map(article => (

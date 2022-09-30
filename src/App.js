@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Articles from './components/Articles'
 import ArticleById from './components/ArticleById'
 import Topics from './components/Topics'
+import RouteNotFound from './components/RouteNotFound'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/articles" element={<Articles />} />
             <Route path="/:topic" element={<Topics />} />
             <Route path="articles/:article_id" element={<ArticleById />} />
+            <Route path="*" element={<RouteNotFound />} />
           </Routes>
         </BrowserRouter>
       </div>
