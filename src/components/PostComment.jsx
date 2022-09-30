@@ -49,6 +49,7 @@ function PostComment({
           id="post-comment"
           placeholder="Enter some text here"
           onChange={handleChange}
+          required
         ></textarea>
         <button type="submit" className="post-comment-btn">
           submit
