@@ -7,15 +7,13 @@ import QueryForm from './QueryForm'
 
 const Articles = () => {
   const [articles, setArticles] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [sortBy, setSortBy] = useState('created_at')
   const [order, setOrder] = useState('desc')
 
   useEffect(() => {
-    setError(false)
-    setLoading(true)
     getArticles(sortBy, order)
       .then(articlesFromApi => {
         setArticles(articlesFromApi)
@@ -37,8 +35,8 @@ const Articles = () => {
       <QueryForm
         setOrder={setOrder}
         setSortBy={setSortBy}
-        sortBy={sortBy}
         order={order}
+        sortBy={sortBy}
       />
       <>
         {articles?.map(article => (
