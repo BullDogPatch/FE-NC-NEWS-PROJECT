@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// https://backend-news-example.herokuapp.com/api/articles
+// remove this comment when approved, only way I could get to open pr
 
 const api = axios.create({
   baseURL: 'https://backend-news-example.herokuapp.com/api',
@@ -35,5 +35,10 @@ export const patchArticleById = async (id, value) => {
 
 export const getCommentsByArticleId = async article_id => {
   const { data } = await api.get(`/articles/${article_id}/comments`)
+  return data
+}
+
+export const postComment = async (article_id, comment) => {
+  const { data } = await api.post(`/articles/${article_id}/comments`, comment)
   return data
 }

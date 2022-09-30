@@ -202,7 +202,7 @@ a:visited {
   cursor: pointer;
   width: 100px;
   border-radius: 5px;
-  padding: 3px;
+  padding: 7px;
 }
 
 .vote-btn:hover {
@@ -263,4 +263,43 @@ a:visited {
   color: red;
   font-weight: 700;
   font-size: 1.2rem;
+}
+
+.post-comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-comment-container .post-comment-label {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.post-comment-container textarea {
+  width: 80%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  margin: 0 auto;
+
+  resize: none;
+}
+
+.post-comment-container button {
+  width: 100px;
+  height: 40px;
+  margin: 20px auto;
+  background-color: #3c3939;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-weight: 700;
 }
