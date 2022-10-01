@@ -8,7 +8,6 @@ import QueryForm from './QueryForm'
 
 const Topics = () => {
   const [articles, setArticles] = useState([])
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [sortBy, setSortBy] = useState('created_at')
@@ -20,7 +19,6 @@ const Topics = () => {
     getTopicArticles(topic, sortBy, order)
       .then(articlesFromApi => {
         setArticles(articlesFromApi)
-        setLoading(false)
       })
       .catch(err => {
         setError(true)
@@ -28,13 +26,13 @@ const Topics = () => {
       })
   }, [topic, sortBy, order])
 
-  if (loading) return <Loading />
-
-  if (error) return <ErrorPage errorMessage={errorMessage.message} />
+  if (error) return <ErrorPage errorMessage={errorMessage} />
 
   return (
     <div className="topic-articles-container">
-      <button onClick={() => navigate('/')}>Go back</button>
+      <button className="go-home" onClick={() => navigate('/')}>
+        Go Home
+      </button>
       <QueryForm
         setOrder={setOrder}
         setSortBy={setSortBy}
