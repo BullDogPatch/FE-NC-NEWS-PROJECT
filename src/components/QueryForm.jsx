@@ -2,7 +2,7 @@ function QueryForm({ setOrder, setSortBy, sortBy, order }) {
   return (
     <>
       <div className="sort-container">
-        <label htmlFor="sort_by">Sort by:</label>
+        <label htmlFor="sort_by">Sort: </label>
         <select
           id="sort_by"
           value={sortBy}
@@ -12,7 +12,7 @@ function QueryForm({ setOrder, setSortBy, sortBy, order }) {
           <option value="comment_count">Comment Count</option>
           <option value="votes">Votes</option>
         </select>
-        <label htmlFor="order">Order:</label>
+        <label htmlFor="order">By: </label>
         <select
           id="order"
           value={order}
